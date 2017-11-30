@@ -1,5 +1,3 @@
-//using Landis.Cohorts.TypeIndependent;
-//using TypeIndependent = Landis.Cohorts.TypeIndependent;
 using Landis.Core;
 using Landis.SpatialModeling;
 

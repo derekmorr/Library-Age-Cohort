@@ -1,7 +1,3 @@
-
-using Landis.Core;
-using System.Collections.Generic;
-
 namespace Landis.Library.AgeOnlyCohorts
 {
     /// <summary>

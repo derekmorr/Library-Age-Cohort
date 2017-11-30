@@ -1,5 +1,3 @@
-
-
 namespace Landis.Library.AgeOnlyCohorts
 {
     /// <summary>
