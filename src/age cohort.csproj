@@ -5,11 +5,10 @@
     <AssemblyTitle>Landis.Library.AgeOnlyCohorts</AssemblyTitle>
     <AssemblyVersion>2.1</AssemblyVersion>
     <AssemblyDescription>AgeOnly Cohort Library</AssemblyDescription>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Landis.Core" Version="1.0.0-CI00001" />
-    <PackageReference Include="Landis.Library.Cohorts" Version="1.0.0-CI00000" />
-    <PackageReference Include="Landis.SpatialModeling" Version="1.0.0-CI00001" />
+    <PackageReference Include="Landis.Library.Cohorts" Version="1.0.0-CI00001" />    <PackageReference Include="Landis.SpatialModeling" Version="1.0.0-CI00001" />
   </ItemGroup>
 </Project>
