@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Landis.Library.AgeOnlyCohorts
 {
     /// <summary>
@@ -13,15 +15,15 @@ namespace Landis.Library.AgeOnlyCohorts
         /// </returns>
         public static ushort GetMaxAge(ISpeciesCohorts cohorts)
         {
-            if (cohorts == null)
+            if (cohorts == null || !cohorts.Any())
+            {
                 return 0;
-            ushort max = 0;
-            foreach (ICohort cohort in cohorts) {
-                //  First cohort is the oldest
-                max = cohort.Age;
-                break;
             }
-            return max;
+            else
+            {
+                //  First cohort is the oldest
+                return cohorts.First().Age;
+            }
         }
 
         //---------------------------------------------------------------------

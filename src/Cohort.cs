@@ -9,8 +9,8 @@ namespace Landis.Library.AgeOnlyCohorts
     public class Cohort
         : ICohort
     {
-        private ISpecies species;
-        private ushort age;
+        private readonly ISpecies species;
+        private readonly ushort age;
 
         //---------------------------------------------------------------------
 

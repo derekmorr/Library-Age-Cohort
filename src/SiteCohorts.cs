@@ -1,15 +1,16 @@
 using Landis.Core;
-using System.Collections;
-using System.Collections.Generic;
 using Landis.SpatialModeling;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Landis.Library.AgeOnlyCohorts
 {
     public class SiteCohorts
         : ISiteCohorts
     {
-        private List<SpeciesCohorts> spp_cohorts;
+        private readonly List<SpeciesCohorts> spp_cohorts;
 
         //---------------------------------------------------------------------
 
@@ -29,7 +30,9 @@ namespace Landis.Library.AgeOnlyCohorts
                 {
                     SpeciesCohorts speciesCohorts = spp_cohorts[i];
                     if (speciesCohorts.Count > 0)
+                    {
                         spp_list.Add(speciesCohorts.Species);
+                    }
                 }
                 return spp_list;
             }
@@ -39,10 +42,13 @@ namespace Landis.Library.AgeOnlyCohorts
 
         private SpeciesCohorts GetCohorts(ISpecies species)
         {
-            for (int i = 0; i < spp_cohorts.Count; i++) {
+            for (int i = 0; i < spp_cohorts.Count; i++)
+            {
                 SpeciesCohorts speciesCohorts = spp_cohorts[i];
                 if (speciesCohorts.Species == species)
+                {
                     return speciesCohorts;
+                }
             }
             return null;
         }
@@ -89,10 +95,13 @@ namespace Landis.Library.AgeOnlyCohorts
         {
             //  Go through list of species cohorts from back to front so that
             //  a removal does not mess up the loop.
-            for (int i = spp_cohorts.Count - 1; i >= 0; i--) {
+            for (int i = spp_cohorts.Count - 1; i >= 0; i--)
+            {
                 spp_cohorts[i].Grow(years, site, successionTimestep, mCore);
                 if (spp_cohorts[i].Count == 0)
+                {
                     spp_cohorts.RemoveAt(i);
+                }
             }
         }
 
@@ -103,10 +112,13 @@ namespace Landis.Library.AgeOnlyCohorts
             //  Go through list of species cohorts from back to front so that
             //  a removal does not mess up the loop.
 
-            for (int i = spp_cohorts.Count - 1; i >= 0; i--) {
+            for (int i = spp_cohorts.Count - 1; i >= 0; i--)
+            {
                 spp_cohorts[i].RemoveMarkedCohorts(disturbance);
                 if (spp_cohorts[i].Count == 0)
+                {
                     spp_cohorts.RemoveAt(i);
+                }
             }
         }
 
@@ -116,10 +128,13 @@ namespace Landis.Library.AgeOnlyCohorts
         {
             //  Go through list of species cohorts from back to front so that
             //  a removal does not mess up the loop.
-            for (int i = spp_cohorts.Count - 1; i >= 0; i--) {
+            for (int i = spp_cohorts.Count - 1; i >= 0; i--)
+            {
                 spp_cohorts[i].RemoveCohorts(disturbance);
                 if (spp_cohorts[i].Count == 0)
+                {
                     spp_cohorts.RemoveAt(i);
+                }
             }
         }
 
@@ -130,9 +145,11 @@ namespace Landis.Library.AgeOnlyCohorts
         /// </summary>
         public void AddNewCohort(ISpecies species)
         {
-            for (int i = 0; i < spp_cohorts.Count; i++) {
+            for (int i = 0; i < spp_cohorts.Count; i++)
+            {
                 SpeciesCohorts speciesCohorts = spp_cohorts[i];
-                if (speciesCohorts.Species == species) {
+                if (speciesCohorts.Species == species)
+                {
                     speciesCohorts.AddNewCohort();
                     return;
                 }
@@ -146,9 +163,11 @@ namespace Landis.Library.AgeOnlyCohorts
 
         public bool IsMaturePresent(ISpecies species)
         {
-            for (int i = 0; i < spp_cohorts.Count; i++) {
+            for (int i = 0; i < spp_cohorts.Count; i++)
+            {
                 SpeciesCohorts speciesCohorts = spp_cohorts[i];
-                if (speciesCohorts.Species == species) {
+                if (speciesCohorts.Species == species)
+                {
                     return speciesCohorts.IsMaturePresent;
                 }
             }
@@ -167,15 +186,15 @@ namespace Landis.Library.AgeOnlyCohorts
 
         public string Write()
         {
-            string msg = "";
-            for (int i = 0; i < spp_cohorts.Count; i++)
+            StringBuilder builder = new StringBuilder();
+            foreach (ISpeciesCohorts speciesCohorts in spp_cohorts)
             {
-                SpeciesCohorts speciesCohorts = spp_cohorts[i];
-                if (speciesCohorts.Count > 0)
-                    foreach (ICohort cohort in speciesCohorts)
-                        msg += String.Format("  {0}/{1};", cohort.Species.Name, cohort.Age);
+                foreach (ICohort cohort in speciesCohorts)
+                {
+                    builder.AppendFormat("  {0}/{1};", cohort.Species.Name, cohort.Age);
+                }
             }
-            return msg;
+            return builder.ToString();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

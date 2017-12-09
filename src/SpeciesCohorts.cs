@@ -2,7 +2,6 @@ using Landis.Core;
 using System.Collections;
 using System.Collections.Generic;
 using Landis.SpatialModeling;
-//using System;
 
 namespace Landis.Library.AgeOnlyCohorts
 {
@@ -12,8 +11,8 @@ namespace Landis.Library.AgeOnlyCohorts
     public class SpeciesCohorts
         : ISpeciesCohorts
     {
-        private ISpecies species;
-        private List<ushort> ages;
+        private readonly ISpecies species;
+        private readonly List<ushort> ages;
         private bool isMaturePresent;
 
         //---------------------------------------------------------------------
@@ -101,7 +100,6 @@ namespace Landis.Library.AgeOnlyCohorts
         /// </summary>
         public void AddNewCohort()
         {
-            //this.ages.Add(0);
             this.ages.Add(1);  //now adding with initial age 1
         }
 
@@ -194,8 +192,6 @@ namespace Landis.Library.AgeOnlyCohorts
             isMaturePresent = false;
             for (int i = ages.Count - 1; i >= 0; i--) {
                 ICohort cohort = new Cohort(species, ages[i]);
-                //Console.WriteLine("Cohort={0}.", cohort.Species.Name);
-                //Console.WriteLine("disturbance={0}.", disturbance.ToString());
                 if (disturbance.MarkCohortForDeath(cohort))
                 {
                     ages.RemoveAt(i);

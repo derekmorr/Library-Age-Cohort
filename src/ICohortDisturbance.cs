@@ -10,7 +10,6 @@ namespace Landis.Library.AgeOnlyCohorts
         /// <summary>
         /// Determines if a cohort is damaged by the disturbance.
         /// </summary>
-        // bool Damage(ICohort cohort);
         bool MarkCohortForDeath(ICohort cohort);
     }
 }

@@ -14,9 +14,9 @@ namespace Landis.Library.AgeOnlyCohorts
         /// </summary>
         /// 
 
-        private ICohort cohort;
-        private ActiveSite site;
-        private ExtensionType disturbanceType;
+        private readonly ICohort cohort;
+        private readonly ActiveSite site;
+        private readonly ExtensionType disturbanceType;
 
         //---------------------------------------------------------------------
 
