@@ -1,5 +1,6 @@
-using Landis.AgeCohort;
-using Landis.Landscape;
+using Landis.Core;
+using Landis.Library.AgeOnlyCohorts;
+using Landis.SpatialModeling;
 using Landis.PlugIns;
 using Landis.Species;
 

@@ -1,7 +1,8 @@
-using Edu.Wisc.Forest.Flel.Grids;
+// using Edu.Wisc.Forest.Flel.Grids;
 using Edu.Wisc.Forest.Flel.Util;
-using Landis.AgeCohort;
-using Landis.Landscape;
+using Landis.Core;
+using Landis.Library.AgeOnlyCohorts;
+using Landis.SpatialModeling;
 using Landis.Species;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Landis.Test.AgeCohort
 
         //---------------------------------------------------------------------
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             species = Data.Species[0];
@@ -35,7 +36,7 @@ namespace Landis.Test.AgeCohort
 
         //---------------------------------------------------------------------
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             Cohort.DeathEvent -= MySenescenceDeathMethod;

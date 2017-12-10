@@ -1,5 +1,6 @@
 using Edu.Wisc.Forest.Flel.Util;
-using Landis.AgeCohort;
+using Landis.Core;
+using Landis.Library.AgeOnlyCohorts;
 using Landis.Species;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Landis.Test.AgeCohort
 
         //---------------------------------------------------------------------
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             species = Data.Species[0];

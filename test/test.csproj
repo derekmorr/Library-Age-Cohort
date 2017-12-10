@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyDescription>Age-Cohort Library - Tests</AssemblyDescription>
+    <AssemblyProduct>Landis-II</AssemblyProduct>
+    <AssemblyCompany>UW-Madison, Forest Landscape Ecology Lab</AssemblyCompany>
+    <AssemblyCopyright>Copyright 2005 University of Wisconsin</AssemblyCopyright>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+
+    <PackageReference Include="Landis.Core" Version="1.0.0-CI00001" />
+
+    <!-- transitive dependencies for Age Cohorts -->
+    <PackageReference Include="Landis.Library.Cohorts" Version="1.0.0-CI00001" />
+    <PackageReference Include="Landis.SpatialModeling" Version="1.0.0-CI00001" />
+    
+    <ProjectReference Include="..\src\age cohort.csproj" />
+  </ItemGroup>
+
+</Project>

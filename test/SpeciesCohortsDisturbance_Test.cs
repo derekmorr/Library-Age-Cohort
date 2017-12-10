@@ -1,7 +1,8 @@
-using Edu.Wisc.Forest.Flel.Grids;
-using Edu.Wisc.Forest.Flel.Util;
-using Landis.AgeCohort;
-using Landis.Landscape;
+// using Edu.Wisc.Forest.Flel.Grids;
+// using Edu.Wisc.Forest.Flel.Util;
+using Landis.Core;
+using Landis.Library.AgeOnlyCohorts;
+using Landis.SpatialModeling;
 using Landis.PlugIns;
 using Landis.Species;
 using NUnit.Framework;
@@ -21,7 +22,7 @@ namespace Landis.Test.AgeCohort
 
         //---------------------------------------------------------------------
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             abiebals = Data.Species["abiebals"];
@@ -41,7 +42,7 @@ namespace Landis.Test.AgeCohort
 
         //---------------------------------------------------------------------
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             Cohort.DeathEvent -= MyCohortDiedMethod;
